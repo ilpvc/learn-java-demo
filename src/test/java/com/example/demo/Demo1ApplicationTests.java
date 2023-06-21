@@ -35,9 +35,16 @@ class Demo1ApplicationTests {
         executorService.execute(()->{System.out.println("hello world");});
 
 //        executorService.shutdownNow();
-        executorService.close();
+//        executorService.close();
     }
-    
+
+
+    @Test
+    public void test4(){
+        Solution solution = new Solution();
+        String s = solution.longestPalindrome("sgdhbbdbbss");
+        System.out.println(s);
+    }
 
 
 }
