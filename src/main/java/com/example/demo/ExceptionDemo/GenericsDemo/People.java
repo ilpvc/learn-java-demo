@@ -1,4 +1,4 @@
-package com.example.demo.GenericsDemo;
+package com.example.demo.ExceptionDemo.GenericsDemo;
 
 /**
  * Description:

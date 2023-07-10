@@ -1,6 +1,4 @@
-package com.example.demo.GenericsDemo;
-
-import java.util.ArrayList;
+package com.example.demo.ExceptionDemo.GenericsDemo;
 
 /**
  * Description:
