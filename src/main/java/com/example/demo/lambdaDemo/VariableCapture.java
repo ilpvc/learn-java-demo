@@ -1,5 +1,7 @@
 package com.example.demo.lambdaDemo;
 
+import java.util.function.Consumer;
+
 /**
  * Description:
  *
@@ -22,4 +24,5 @@ class Test{
     public void func(){
         System.out.println("func");
     }
+
 }

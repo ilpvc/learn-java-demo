@@ -19,5 +19,9 @@ public class LambdaDemo01 {
         };
         System.out.println(o.test(100));
 
+        TwoParameter tp = (a,b)->{
+            System.out.println("结果是："+(a+b));
+        };
+        tp.accept(10,22);
     }
 }
