@@ -30,7 +30,8 @@ import javax.sql.DataSource;
  * @date:2023/7/10 13:24
  * @author: ilpvc
  */
-@Configuration
+
+//@Configuration
 public class BatchConfig {
     @Bean
     public FlatFileItemReader<Person> reader(){
