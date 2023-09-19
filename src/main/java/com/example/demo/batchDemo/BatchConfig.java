@@ -25,7 +25,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 /**
- * Description:
+ * Description: 注释掉所有的bean ，防止影响启动
  *
  * @date:2023/7/10 13:24
  * @author: ilpvc
@@ -33,55 +33,55 @@ import javax.sql.DataSource;
 
 //@Configuration
 public class BatchConfig {
-    @Bean
-    public FlatFileItemReader<Person> reader(){
-        return new FlatFileItemReaderBuilder<Person>()
-                .name("personItemReader")
-                .resource(new ClassPathResource("sample-data.csv"))
-                .delimited()
-                .names(new String[]{"firstName","lastName"})
-                .fieldSetMapper(new BeanWrapperFieldSetMapper<Person>(){{
-                    setTargetType(Person.class);
-                }})
-                .build();
-    }
+//    @Bean
+//    public FlatFileItemReader<Person> reader(){
+//        return new FlatFileItemReaderBuilder<Person>()
+//                .name("personItemReader")
+//                .resource(new ClassPathResource("sample-data.csv"))
+//                .delimited()
+//                .names(new String[]{"firstName","lastName"})
+//                .fieldSetMapper(new BeanWrapperFieldSetMapper<Person>(){{
+//                    setTargetType(Person.class);
+//                }})
+//                .build();
+//    }
+//
+////    @Bean
+//    public PersonItemProcessor processor() {
+//        return new PersonItemProcessor();
+//    }
+//
+////    @Bean
+//    public JdbcBatchItemWriter<Person> writer(DataSource dataSource) {
+//        return new JdbcBatchItemWriterBuilder<Person>()
+//                .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
+//                .sql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)")
+//                .dataSource(dataSource)
+//                .build();
+//    }
+//
+//
+////    @Bean
+//    public Job importUserJob(JobRepository jobRepository,Step step1){
+//        return new JobBuilder("importUserJob",jobRepository)
+//                .incrementer(new RunIdIncrementer())
+//                .flow(step1)
+//                .end()
+//                .build();
+//    }
 
-    @Bean
-    public PersonItemProcessor processor() {
-        return new PersonItemProcessor();
-    }
 
-    @Bean
-    public JdbcBatchItemWriter<Person> writer(DataSource dataSource) {
-        return new JdbcBatchItemWriterBuilder<Person>()
-                .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)")
-                .dataSource(dataSource)
-                .build();
-    }
-
-
-    @Bean
-    public Job importUserJob(JobRepository jobRepository,Step step1){
-        return new JobBuilder("importUserJob",jobRepository)
-                .incrementer(new RunIdIncrementer())
-                .flow(step1)
-                .end()
-                .build();
-    }
-
-
-    @Bean
-    public Step step1(JobRepository jobRepository,
-                      PlatformTransactionManager transactionManager,
-                      JdbcBatchItemWriter<Person> writer){
-        return new StepBuilder("step1", jobRepository)
-                .<Person, Person> chunk(10, transactionManager)
-                .reader(reader())
-                .processor(processor())
-                .writer(writer)
-                .build();
-    }
+//    @Bean
+//    public Step step1(JobRepository jobRepository,
+//                      PlatformTransactionManager transactionManager,
+//                      JdbcBatchItemWriter<Person> writer){
+//        return new StepBuilder("step1", jobRepository)
+//                .<Person, Person> chunk(10, transactionManager)
+//                .reader(reader())
+//                .processor(processor())
+//                .writer(writer)
+//                .build();
+//    }
 
 
 }
